@@ -18,19 +18,25 @@
   </properties>
   <packaging>pom</packaging>
   <modules>
-    <module>backend/auth-service</module>
-    <module>backend/mail-service</module>
+    <module>mail-service</module>
+    <module>board-service</module>
+    <module>gateway-service</module>
+    <module>user-service</module>
+    <module>client-service</module>
   </modules>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
-
+<!--    <dependency>-->
+<!--      <groupId>junit</groupId>-->
+<!--      <artifactId>junit</artifactId>-->
+<!--      <version>4.13.2</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.jboss.aerogear</groupId>-->
+<!--      <artifactId>aerogear-otp-java</artifactId>-->
+<!--      <version>1.0.0</version>-->
+<!--    </dependency>-->
   </dependencies>
-
   <build>
     <plugins>
       <plugin>

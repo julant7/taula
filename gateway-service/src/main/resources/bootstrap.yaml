@@ -1,0 +1,26 @@
+server:
+  port: 7771
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: optional:configserver:http://clouduser:configserver!@localhost:8888
+  cloud:
+    config:
+      profile: dev
+    gateway:
+      discovery.locator.enabled: true
+  gateway:
+    excludedURLs: /api/users/authenticate,/login
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekauser:eureka!@localhost:8761/eureka
+  instance:
+    prefer-ip-address: 'true'
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    lifetime: 2678400000

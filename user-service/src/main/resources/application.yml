@@ -1,0 +1,63 @@
+server:
+  port: 7772
+  error:
+    include-stacktrace: never
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+#          yandex:
+#            client-id: ${YANDEX_CLIENT_ID}
+#            client-secret: ${YANDEX_CLIENT_SECRET}
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
+      timeout: 86400
+  application:
+    name: auth-service
+  cloud:
+    config:
+      profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: none
+  jackson:
+    default-property-inclusion: non_default
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      bootstrap-servers: localhost:9092
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekauser:eureka!@localhost:8761/eureka
+
+topic:
+  email_message: email_message
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    lifetimeForRefreshToken: 2678400000
+    lifetimeForAccessToken: 300000
+    lifetimeForCreateUser: 86400000
+    lifetimeForResetPassword: 86400000
